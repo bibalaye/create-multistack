@@ -1,0 +1,32 @@
+# Fichiers à EXCLURE du package npm publié
+
+# Code source des projets de test / démo
+mon-projet/
+test-*/
+demo-*/
+
+# Documentation interne
+documentation-boilerplate-multi-framework.md
+CONTRIBUTING.md
+
+# Fichiers de dev
+.editorconfig
+.eslintrc*
+.prettierrc*
+*.log
+
+# Git
+.git/
+.gitignore
+
+# Config IDE
+.vscode/
+.idea/
+
+# CI/CD (du CLI lui-même, pas des templates)
+.github/
+
+# Cache & temporaires
+node_modules/
+.cache/
+*.tsbuildinfo

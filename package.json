@@ -1,0 +1,47 @@
+{
+  "name": "create-multistack",
+  "version": "0.1.0",
+  "description": "CLI interactif pour scaffolder des projets multi-frameworks (React, Next.js, Vue, Angular, Svelte)",
+  "type": "module",
+  "bin": {
+    "create-multistack": "./bin/index.js"
+  },
+  "main": "./bin/index.js",
+  "scripts": {
+    "start": "node bin/index.js",
+    "dev": "node bin/index.js",
+    "validate": "node scripts/validate.js",
+    "prepublishOnly": "node scripts/validate.js"
+  },
+  "keywords": [
+    "cli",
+    "scaffolding",
+    "boilerplate",
+    "react",
+    "nextjs",
+    "vue",
+    "angular",
+    "svelte",
+    "typescript",
+    "tailwind"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/votre-org/create-multistack.git"
+  },
+  "homepage": "https://github.com/votre-org/create-multistack#readme",
+  "bugs": {
+    "url": "https://github.com/votre-org/create-multistack/issues"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.2.0",
+    "execa": "^9.6.1",
+    "fs-extra": "^11.3.4",
+    "picocolors": "^1.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
