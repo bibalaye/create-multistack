@@ -151,13 +151,15 @@ function getFrameworkCommand(variant, useTypeScript, useTailwind) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 const COMMON_FILE_MAP = {
-  editorconfig:    { src: '.editorconfig',                dest: '.editorconfig' },
-  gitignore:       { src: '.gitignore',                   dest: '.gitignore' },
-  readme:          { src: 'README.md',                    dest: 'README.md' },
-  license:         { src: 'LICENSE',                      dest: 'LICENSE' },
-  'github-actions': { src: '.github/workflows/ci.yml',   dest: '.github/workflows/ci.yml' },
-  docker:          { src: 'Dockerfile',                   dest: 'Dockerfile' },
-  vscode:          { src: '.vscode/settings.json',        dest: '.vscode/settings.json' },
+  editorconfig:     { src: '.editorconfig',              dest: '.editorconfig' },
+  // Note: le fichier source est 'gitignore' (sans point) car npm exclut toujours
+  // les fichiers nommés '.gitignore' lors de la publication du package.
+  gitignore:        { src: 'gitignore',                  dest: '.gitignore' },
+  readme:           { src: 'README.md',                  dest: 'README.md' },
+  license:          { src: 'LICENSE',                    dest: 'LICENSE' },
+  'github-actions': { src: '.github/workflows/ci.yml',  dest: '.github/workflows/ci.yml' },
+  docker:           { src: 'Dockerfile',                 dest: 'Dockerfile' },
+  vscode:           { src: '.vscode/settings.json',      dest: '.vscode/settings.json' },
 };
 
 // ─────────────────────────────────────────────────────────────────────────────

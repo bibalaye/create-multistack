@@ -103,7 +103,8 @@ async function checkSharedFiles() {
   section('Fichiers shared/');
   const shared = [
     'shared/.editorconfig',
-    'shared/.gitignore',
+    // 'shared/.gitignore' → renommé 'shared/gitignore' (npm exclut les .gitignore)
+    'shared/gitignore',
     'shared/LICENSE',
     'shared/README.md',
     'shared/Dockerfile',

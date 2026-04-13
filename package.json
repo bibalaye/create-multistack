@@ -1,7 +1,7 @@
 {
   "name": "create-multistack",
   "version": "0.1.0",
-  "description": "CLI interactif pour scaffolder des projets multi-frameworks (React, Next.js, Vue, Angular, Svelte)",
+  "description": "CLI interactif pour scaffolder des projets multi-frameworks (React, Next.js, Vue, Angular, Svelte, Astro) avec TypeScript, Tailwind, ESLint, Prettier, Vitest et plus.",
   "type": "module",
   "bin": {
     "create-multistack": "./bin/index.js"
@@ -13,27 +13,39 @@
     "validate": "node scripts/validate.js",
     "prepublishOnly": "node scripts/validate.js"
   },
+  "files": [
+    "bin/",
+    "src/",
+    "shared/",
+    "scripts/validate.js",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "keywords": [
     "cli",
     "scaffolding",
     "boilerplate",
+    "create-app",
     "react",
     "nextjs",
     "vue",
     "angular",
     "svelte",
+    "astro",
     "typescript",
-    "tailwind"
+    "tailwind",
+    "vite"
   ],
-  "author": "",
+  "author": "bibalaye",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/votre-org/create-multistack.git"
+    "url": "git+https://github.com/bibalaye/create-multistack.git"
   },
-  "homepage": "https://github.com/votre-org/create-multistack#readme",
+  "homepage": "https://github.com/bibalaye/create-multistack#readme",
   "bugs": {
-    "url": "https://github.com/votre-org/create-multistack/issues"
+    "url": "https://github.com/bibalaye/create-multistack/issues"
   },
   "dependencies": {
     "@clack/prompts": "^1.2.0",
