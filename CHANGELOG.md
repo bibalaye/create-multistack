@@ -7,21 +7,17 @@ ce projet respecte le [Semantic Versioning](https://semver.org/lang/fr/).
 
 ---
 
-## [Unreleased]
+## [0.1.1] — 2026-04-15
 
 ### Ajouté
-- Support Nuxt 3 comme variante Vue
-- Support SvelteKit comme variante Svelte
-- Support Astro (Island Architecture)
-- Script Husky + lint-staged pour git hooks
-- Dockerfile multi-stage inclus dans les fichiers communs
-- GitHub Actions CI workflow
+- **UI Architecture** : Sélecteur de bibliothèques UI intégré (shadcn/ui, shadcn-vue, shadcn-svelte, MUI, Chakra UI, Ant Design, Mantine, PrimeVue, Element Plus).
+- Support Nuxt 3 et SvelteKit.
+- Support Astro.
+- Initialisation automatique pour les libs basées sur Tailwind (shadcn init).
 
-### Prévu
-- Support Remix
-- Support Qwik
-- Mode `--template` pour scaffolding non-interactif
-- Tests automatisés de chaque framework
+### Corrigé
+- Problème de fichiers invisibles (.gitignore, etc.) lors du `npm publish`.
+- Correction du mapping des fichiers partagés.
 
 ---
 
