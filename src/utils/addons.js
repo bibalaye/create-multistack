@@ -255,3 +255,84 @@ export async function applyStateManagement(targetDir, pm, stateLib) {
   const [cmd, args] = getAddCmd(pm, pkgs, false);
   await run(cmd, args, targetDir);
 }
+// ─────────────────────────────────────────────────────────────────────────────
+// Bibliothèques UI
+// ─────────────────────────────────────────────────────────────────────────────
+
+const UI_CONFIGS = {
+  // --- React / Next.js ---
+  shadcn: {
+    deps: ['lucide-react', 'clsx', 'tailwind-merge'],
+    init: ['npx', ['shadcn@latest', 'init', '-d']],
+  },
+  mui: {
+    deps: ['@mui/material', '@emotion/react', '@emotion/styled', '@mui/icons-material'],
+  },
+  chakra: {
+    deps: ['@chakra-ui/react', '@emotion/react', '@emotion/styled', 'framer-motion'],
+  },
+  antd: {
+    deps: ['antd', '@ant-design/icons'],
+  },
+  mantine: {
+    deps: ['@mantine/core', '@mantine/hooks'],
+  },
+
+  // --- Vue ---
+  'shadcn-vue': {
+    deps: ['lucide-vue-next', 'radix-vue', 'clsx', 'tailwind-merge'],
+    init: ['npx', ['shadcn-vue@latest', 'init', '-d']],
+  },
+  'element-plus': {
+    deps: ['element-plus', '@element-plus/icons-vue'],
+  },
+  primevue: {
+    deps: ['primevue', 'primeicons'],
+  },
+
+  // --- Svelte ---
+  'shadcn-svelte': {
+    deps: ['lucide-svelte', 'bits-ui', 'clsx', 'tailwind-merge'],
+    init: ['npx', ['shadcn-svelte@latest', 'init', '-d']],
+  },
+  skeleton: {
+    deps: ['@skeletonlabs/skeleton', '@skeletonlabs/tw-plugin'],
+  },
+
+  // --- Angular ---
+  'angular-material': {
+    deps: ['@angular/material', '@angular/cdk', '@angular/animations'],
+  },
+  primeng: {
+    deps: ['primeng', 'primeicons'],
+  },
+};
+
+/**
+ * Applique la bibliothèque UI sélectionnée.
+ */
+export async function applyUILibrary(targetDir, pm, uiLib, framework) {
+  if (!uiLib || uiLib === 'none') return;
+
+  const config = UI_CONFIGS[uiLib];
+  if (!config) return;
+
+  // 1. Installer les dépendances
+  if (config.deps && config.deps.length > 0) {
+    const [cmd, args] = getAddCmd(pm, config.deps, false);
+    await run(cmd, args, targetDir);
+  }
+
+  // 2. Initialisation spécifique (shancn, etc.)
+  if (config.init) {
+    const [cmd, args] = config.init;
+    // On utilise run avec silent=false pour shadcn car il peut avoir besoin de feedback visuel
+    await run(cmd, args, targetDir, false);
+  }
+
+  // 3. Post-configuration spécifique par framework
+  if (uiLib === 'shadcn' && framework === 'nextjs') {
+    // Shancn configure déjà beaucoup de choses avec l'option -d
+    // On pourrait ajouter des composants de base ici si besoin
+  }
+}

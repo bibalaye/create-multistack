@@ -138,3 +138,40 @@ export const COMMON_FILES = [
   { value: 'docker',       label: '🐳 Dockerfile',    hint: 'Image Docker de base pour le projet' },
   { value: 'vscode',       label: '💻 .vscode/settings.json', hint: 'Config VSCode recommandée' },
 ];
+export const UI_LIBRARIES = {
+  react: [
+    { value: 'none', label: 'Aucune', hint: 'Pas de librairie UI pré-installée' },
+    { value: 'shadcn', label: '💎 shadcn/ui', hint: 'Premium, Tailwind-based (recommandé)' },
+    { value: 'mui', label: '🥇 Material UI (MUI)', hint: 'Complet, design Google' },
+    { value: 'chakra', label: '🎨 Chakra UI', hint: 'Moderne et flexible' },
+    { value: 'mantine', label: '⚡ Mantine', hint: 'Composants riches et hooks stylés' },
+    { value: 'antd', label: '🥉 Ant Design', hint: 'Idéal pour dashboards complexes' },
+  ],
+  nextjs: [
+    { value: 'none', label: 'Aucune', hint: 'Pas de librairie UI pré-installée' },
+    { value: 'shadcn', label: '💎 shadcn/ui', hint: 'La meilleure pour Next.js (Tailwind + Radix)' },
+    { value: 'mui', label: '🥇 Material UI', hint: 'Classique et robuste' },
+    { value: 'chakra', label: '🎨 Chakra UI', hint: 'Facile et moderne' },
+  ],
+  vue: [
+    { value: 'none', label: 'Aucune', hint: 'Pas de librairie UI pré-installée' },
+    { value: 'shadcn-vue', label: '💎 shadcn-vue', hint: 'Portage de shadcn pour Vue' },
+    { value: 'element-plus', label: '🥇 Element Plus', hint: 'Très complet pour Vue 3' },
+    { value: 'primevue', label: '🥉 PrimeVue', hint: 'Énorme collection de composants' },
+  ],
+  svelte: [
+    { value: 'none', label: 'Aucune', hint: 'Pas de librairie UI pré-installée' },
+    { value: 'shadcn-svelte', label: '💎 shadcn-svelte', hint: 'Portage de shadcn pour Svelte' },
+    { value: 'skeleton', label: '💀 Skeleton UI', hint: 'Tailwind-based pour SvelteKit' },
+  ],
+  angular: [
+    { value: 'none', label: 'Aucune', hint: 'Pas de librairie UI pré-installée' },
+    { value: 'angular-material', label: '🥇 Angular Material', hint: 'Officiel, design Google' },
+    { value: 'primeng', label: '🥉 PrimeNG', hint: 'Très complet pour Angular' },
+  ],
+  astro: [
+    { value: 'none', label: 'Aucune', hint: 'Pas de librairie UI pré-installée' },
+    { value: 'shadcn', label: '💎 shadcn (React islands)', hint: 'Utilise React pour les composants UI' },
+    { value: 'tailwind-only', label: '🎨 Tailwind Only', hint: 'Pas de composants JS' },
+  ],
+};

@@ -27,6 +27,7 @@ import {
   applyHusky,
   applyTesting,
   applyStateManagement,
+  applyUILibrary,
 } from './utils/addons.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -223,6 +224,7 @@ export async function scaffoldProject(answers) {
     framework,
     variant,
     addons,
+    uiLibrary,
     stateManagement,
     commonFiles,
     packageManager: pm,
@@ -359,6 +361,17 @@ export async function scaffoldProject(answers) {
       spinner.stop(pc.green('✔ Vitest configuré'));
     } catch (err) {
       spinner.stop(pc.yellow(`⚠ Vitest : ${err.message}`));
+    }
+  }
+
+  // ── 4.5. Librairie UI ────────────────────────────────────────────────────
+  if (uiLibrary && uiLibrary !== 'none') {
+    spinner.start(`Installation de la bibliothèque UI (${pc.cyan(uiLibrary)})…`);
+    try {
+      await applyUILibrary(targetDir, pm, uiLibrary, framework);
+      spinner.stop(pc.green(`✔ Bibliothèque UI ${uiLibrary} configurée`));
+    } catch (err) {
+      spinner.stop(pc.yellow(`⚠ UI Library : ${err.message}`));
     }
   }
 

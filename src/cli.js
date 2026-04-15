@@ -7,7 +7,7 @@
 import * as p from '@clack/prompts';
 import pc from 'picocolors';
 import path from 'path';
-import { FRAMEWORKS, PACKAGE_MANAGERS, ADDONS, STATE_MANAGEMENT, COMMON_FILES } from './constants.js';
+import { FRAMEWORKS, PACKAGE_MANAGERS, ADDONS, STATE_MANAGEMENT, COMMON_FILES, UI_LIBRARIES } from './constants.js';
 import { scaffoldProject } from './scaffolder.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -117,6 +117,16 @@ async function askAddons() {
   );
 }
 
+async function askUILibrary(frameworkKey) {
+  const options = UI_LIBRARIES[frameworkKey] ?? UI_LIBRARIES['react'];
+  return prompt(() =>
+    p.select({
+      message: pc.cyan('🎨 Quelle bibliothèque UI souhaitez-vous utiliser ?'),
+      options,
+    })
+  );
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Étape 5 — Gestion d'état (conditionnel selon le framework)
 // ─────────────────────────────────────────────────────────────────────────────
@@ -200,6 +210,7 @@ function printSummary(answers) {
       `${pc.bold('Dossier')}    → ${pc.dim(path.resolve(process.cwd(), answers.projectName))}`,
       `${pc.bold('Framework')}  → ${framework?.label ?? answers.framework}  ${variant?.label ? pc.dim(`(${variant.label})`) : ''}`,
       `${pc.bold('Add-ons')}    → ${answers.addons.length ? answers.addons.join(', ') : pc.dim('Aucun')}`,
+      `${pc.bold('UI Library')} → ${answers.uiLibrary === 'none' ? pc.dim('Aucune') : answers.uiLibrary}`,
       `${pc.bold('État')}       → ${answers.stateManagement === 'none' ? pc.dim('Aucun') : answers.stateManagement}`,
       `${pc.bold('Fichiers')}   → ${answers.commonFiles.length ? answers.commonFiles.join(', ') : pc.dim('Aucun')}`,
       `${pc.bold('Pkg Mgr')}    → ${answers.packageManager}`,
@@ -250,6 +261,7 @@ export async function run() {
   const framework        = await askFramework();
   const variant          = await askVariant(framework);
   const addons           = await askAddons();
+  const uiLibrary        = await askUILibrary(framework);
   const stateManagement  = await askStateManagement(framework);
   const commonFiles      = await askCommonFiles();
   const packageManager   = await askPackageManager();
@@ -261,6 +273,7 @@ export async function run() {
     framework,
     variant,
     addons,
+    uiLibrary,
     stateManagement,
     commonFiles,
     packageManager,
